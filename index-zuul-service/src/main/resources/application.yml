@@ -1,0 +1,29 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: index-zuul-service
+  zipkin:
+    base-url: http://localhost:9411
+zuul:
+  routes:
+    api-a:
+      path: /api-codes/**
+      serviceId: INDEX-CODES-SERVICE
+    api-b:
+      path: /api-data/**
+      serviceId: INDEX-DATA-SERVICE
+    api-c:
+      path: /api-backtest/**
+      serviceId: TREND-TRADING-BACKTEST-SERVICE
+    api-d:
+      path: /api-view/**
+      serviceId: TREND-TRADING-BACKTEST-VIEW
+
+#防止超时，默认是1秒
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 126000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000

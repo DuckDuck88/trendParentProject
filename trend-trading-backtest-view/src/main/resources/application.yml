@@ -1,0 +1,26 @@
+ribbon:
+  eureka:
+    enabled: true
+
+spring:
+  application:
+    name: trend-trading-backtest-view
+    #服务调用链路追踪
+  zipkin:
+    base-url: http://localhost:9411
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+
+#允许访问：/actuator/bus-refresh 刷新配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"

@@ -1,0 +1,13 @@
+spring:
+  application.name: turbine
+
+#用于断路监控，将被监控的集群服务端口聚合起来，监控方便
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: trend-trading-backtest-service   # 配置Eureka中的serviceId列表，表明监控哪些服务
+  clusterNameExpression: new String("default")
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
